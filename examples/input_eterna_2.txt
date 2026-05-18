@@ -1,0 +1,27 @@
+[14:32] Ramazan: okay, so — two weeks in, what's the honest read?
+
+[14:38] Priya: Honest read. Um. It's well-built. Voice capture is fast, transcription is genuinely good — better than the iOS dictation I'm used to. I gave you that compliment already though, so I should get to the part you actually want.
+
+[14:51] Ramazan: yeah hit me.
+
+[14:53] Priya: So here's the thing I keep getting stuck on. I'm a product person, I'm going to think like one. I tried to articulate what Eterna does that I couldn't get somewhere else, and I had a hard time. Honestly, I could probably build 80% of this with ChatGPT and a Notion template in a weekend. Voice memos in, GPT-4 cleans them up, I tag them in Notion, I search Notion. Like — what's the moat?
+
+[15:19] Ramazan: that's fair, the moat question is the one I—
+
+[15:22] Priya: And I'm not trying to be mean about it. Your execution is way better than what I'd hack together. But "better execution of something I could DIY" is a hard sell when I already have ten subscriptions. I'd need to feel like the app understood me over time, or did something the models can't do on their own. Right now it feels like a nice wrapper.
+
+[15:51] Ramazan: do you mean the data-flywheel piece? like it should get smarter from your usage?
+
+[15:56] Priya: Yeah. Or moats in general. Right now my voice memos go in, I get back well-organized memories. Cool. But the next user who signs up gets the exact same product I got on day one. There's no "Priya's Eterna is different from Daniel's Eterna" yet, you know? That's where I'd want to see it go.
+
+[16:34] Priya: Also small thing — the iOS share extension doesn't work on iPad. Minor. Worth fixing but not the headline.
+
+[16:48] Ramazan: noted, that's a bug. Would you pay for it as it stands today?
+
+[16:52] Priya: Honestly? Not yet. If a friend asked me whether to try it I'd say yes, it's free. But I would not put it in my paid stack right now. Ask me again in three months if you've made it feel more like mine.
+
+[17:20] Ramazan: that's exactly the feedback I needed, thank you.
+
+[17:24] Priya: of course. happy to keep being a guinea pig.
+
+[Call continues into unrelated topic — transcript truncated.]

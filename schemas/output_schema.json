@@ -1,0 +1,143 @@
+{
+  "type": "object",
+  "properties": {
+    "fellow_id": {
+      "type": "string",
+      "description": "Fellow name or product name being synthesized."
+    },
+    "synthesis_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date (YYYY-MM-DD) when this synthesis was produced."
+    },
+    "design_partners_synthesized": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Number of distinct design partner feedback artifacts ingested for this synthesis."
+    },
+    "themes": {
+      "type": "array",
+      "maxItems": 3,
+      "description": "Top 3 themes across the feedback, ranked by impact on Gate G4 readiness.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "theme": {
+            "type": "string",
+            "description": "Short theme title (a few words)."
+          },
+          "summary": {
+            "type": "string",
+            "description": "1-2 sentence summary of the theme."
+          },
+          "partners_raising": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Identifiers of the partners who raised this theme."
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["blocker", "major", "minor"],
+            "description": "How severely this theme threatens Gate G4 readiness."
+          }
+        },
+        "required": ["theme", "summary", "partners_raising", "severity"]
+      }
+    },
+    "critical_objections": {
+      "type": "array",
+      "description": "Specific objections that, if unaddressed, would block paying customers. May be empty.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "objection": {
+            "type": "string",
+            "description": "One-sentence statement of the objection."
+          },
+          "partner_source": {
+            "type": "string",
+            "description": "Which design partner raised this."
+          },
+          "blocks_paying": {
+            "type": "boolean",
+            "description": "True if this objection, unresolved, would prevent the partner from paying."
+          }
+        },
+        "required": ["objection", "partner_source", "blocks_paying"]
+      }
+    },
+    "must_fix_for_g4": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "1-sentence items the Fellow must ship or fix before Gate G4 is realistic."
+    },
+    "nice_to_have_post_launch": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Lower-priority requests worth tracking but not blocking G4. May be empty."
+    },
+    "next_sprint_brief": {
+      "type": "string",
+      "description": "One paragraph (3-5 sentences), Fellow-facing, written to be read first thing Monday morning. Specific, not generic."
+    },
+    "kill_signal_flags": {
+      "type": "array",
+      "description": "Utopia Kill Signals triggered by evidence in the feedback. Only flag with clear textual basis. May be empty.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "signal": {
+            "type": "string",
+            "enum": ["data_loop", "model_capability", "ai_moat", "accuracy_floor"],
+            "description": "Which of the four Kill Signals this flag corresponds to."
+          },
+          "triggered_by": {
+            "type": "string",
+            "description": "Exact quote or close paraphrase from the input that triggered this flag."
+          },
+          "rationale": {
+            "type": "string",
+            "description": "One sentence explaining why this evidence triggers this signal."
+          }
+        },
+        "required": ["signal", "triggered_by", "rationale"]
+      }
+    },
+    "g4_readiness_score": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Studio operator's view of how close this Fellow is to Gate G4 readiness, on a 1-10 scale."
+    },
+    "g4_readiness_rationale": {
+      "type": "string",
+      "description": "1-2 sentence justification for the readiness score."
+    },
+    "scorecard_present": {
+      "type": "boolean",
+      "description": "True if a SCORECARD ARTIFACT block was provided as input, false otherwise."
+    },
+    "scorecard_gaps_flagged": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Metrics that should be tracked for this venture's G4 readiness assessment but are absent from the scorecard (or absent because no scorecard was provided). Each string is a one-line description of the missing metric. May be empty."
+    }
+  },
+  "required": [
+    "fellow_id",
+    "synthesis_date",
+    "design_partners_synthesized",
+    "themes",
+    "critical_objections",
+    "must_fix_for_g4",
+    "nice_to_have_post_launch",
+    "next_sprint_brief",
+    "kill_signal_flags",
+    "g4_readiness_score",
+    "g4_readiness_rationale",
+    "scorecard_present",
+    "scorecard_gaps_flagged"
+  ]
+}

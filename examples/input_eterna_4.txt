@@ -1,0 +1,31 @@
+From: Alex K. <alex.k@[redacted].dev>
+To: ramazan@eterna.app
+Subject: 2-week Eterna writeup — bugs, theory, and one weird thing
+
+Ramazan,
+
+Promised you a writeup, here it is. Bug report from a friendly nerd, not a roast.
+
+Setup: iPhone 15 Pro, iOS 18.4, fresh install May 1. ~40 voice memos over 14 days, deliberately stress-testing across noisy bars, the gym, in the car. I also wrote a tiny script to re-import the same audio files multiple times to see how stable the model output is. That's where the headline finding is, so I'm putting it first.
+
+THE WEIRD THING
+I re-imported the same .m4a three times across three days. Same audio. Identical bytes. I got back three meaningfully different memory summaries — different tags, different inferred dates ("last Tuesday" vs "May 8" vs no date at all), and one summary attributed a quote to a person whose name was never spoken in the audio. The user-facing memory cards were visibly different from each other. This isn't a rounding-error difference, this is "is the same input producing the same output." For an app whose whole promise is reliable memory, that broke trust for me. I won't recommend to friends until I can play back a memory and trust what it says about who, what, and when. Happy to send you the audio files and the raw JSON if useful.
+
+OTHER BUGS (smaller)
+- Date search sometimes returns memories that don't actually contain that date — looks like fuzzy-matching to adjacent dates
+- People-tagging once attributed a quote to me when I was clearly quoting someone else (same family of problem as above)
+- First recording after a phone restart sometimes loses the first 1-2 seconds of audio
+
+WHAT'S GOOD
+- Capture flow is genuinely better than iOS Voice Memos
+- The people graph is the best part of the app
+- Solid performance, no crashes in 14 days
+
+THEORY (take or leave)
+If you're hitting an LLM at write-time without pinning seed/temperature, and not caching the structured output keyed on the audio hash, this is exactly what you'd see. If you're already on it, ignore me.
+
+Will I pay? Curious enough to keep playing for free. Won't pay or recommend until same-input-same-output is fixed. That's the thing.
+
+Cheers,
+Alex K.
+indie iOS dev, ex-Stripe

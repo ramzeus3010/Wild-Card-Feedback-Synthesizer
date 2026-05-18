@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "tickets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Imperative-voice ticket title, max 100 chars"
+          },
+          "description": {
+            "type": "string",
+            "description": "1–2 paragraph context for the must-fix item"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["urgent", "high", "medium", "low"]
+          },
+          "labels": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "String labels — another agent will resolve to Linear label IDs. Must include 'm6', 'g4-readiness', and the fellow_id from the synthesis."
+          },
+          "source": {
+            "type": "string",
+            "description": "Always 'M6 Design Partner Synthesis Agent'"
+          }
+        },
+        "required": ["title", "description", "priority", "labels", "source"]
+      }
+    }
+  },
+  "required": ["tickets"]
+}
