@@ -26,9 +26,9 @@ Routing logic is deterministic Python; only the *content* inside the handoff fil
 git clone <this-repo-url>
 cd <repo>
 pip install -r requirements.txt
-cp .env.example .env
-# paste your ANTHROPIC_API_KEY into .env
 ```
+
+Then copy `.env.example` to `.env` (any file manager, or `cp` on macOS/Linux / `Copy-Item` in PowerShell) and paste your `ANTHROPIC_API_KEY` into the new file.
 
 ## Usage
 
