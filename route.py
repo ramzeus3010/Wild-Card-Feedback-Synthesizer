@@ -99,10 +99,28 @@ def generate_tickets(client: Anthropic, system: str, synthesis: dict) -> dict:
     msg = _user_msg(
         "LINEAR_TICKETS\nGenerate one ticket per item in must_fix_for_g4. "
         f"Every ticket's labels MUST include 'm6', 'g4-readiness', and '{synthesis['fellow_id']}'. "
-        "Source field must be 'M6 Design Partner Synthesis Agent'.",
+        "Source field must be 'M6 Design Partner Synthesis Agent'. "
+        "The tickets field must be a JSON array of objects, not a JSON-encoded string.",
         synthesis,
     )
-    return _call_tickets(client, system, msg, tool)
+    payload = _call_tickets(client, system, msg, tool)
+    # Defensive: some models occasionally emit array/object fields as JSON strings.
+    tickets = payload.get("tickets")
+    if isinstance(tickets, str):
+        try:
+            payload["tickets"] = json.loads(tickets)
+        except json.JSONDecodeError as exc:
+            sys.exit(f"error: model returned tickets as a malformed JSON string: {exc}")
+    for t in payload.get("tickets", []):
+        labels = t.get("labels")
+        if isinstance(labels, str):
+            try:
+                t["labels"] = json.loads(labels)
+            except json.JSONDecodeError:
+                t["labels"] = [labels]
+    if not isinstance(payload.get("tickets"), list):
+        sys.exit("error: model did not return a tickets array.")
+    return payload
 
 
 def _summarize_tickets(payload: dict) -> str:
