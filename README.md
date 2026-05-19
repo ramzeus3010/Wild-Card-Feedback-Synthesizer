@@ -25,10 +25,26 @@ Routing logic is deterministic Python; only the *content* inside the handoff fil
 ```bash
 git clone <this-repo-url>
 cd <repo>
+```
+
+*Recommended: use a virtual environment* (required on macOS Sonoma+ and recent Ubuntu/Debian, which refuse global `pip install` under PEP 668).
+
+macOS / Linux:
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+```
+
+Windows (PowerShell):
+```powershell
+python -m venv .venv; .\.venv\Scripts\Activate.ps1
+```
+
+Then install dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-Then copy `.env.example` to `.env` (any file manager, or `cp` on macOS/Linux / `Copy-Item` in PowerShell) and paste your `ANTHROPIC_API_KEY` into the new file.
+Copy `.env.example` to `.env` (any file manager, or `cp` on macOS/Linux / `Copy-Item` in PowerShell) and paste your `ANTHROPIC_API_KEY` into the new file.
 
 ## Usage
 
