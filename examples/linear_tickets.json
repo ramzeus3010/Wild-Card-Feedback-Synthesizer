@@ -1,0 +1,40 @@
+{
+  "tickets": [
+    {
+      "title": "Collect explicit stated WTP from Maya before G4",
+      "description": "Maya is the only design partner in the cohort without a price anchor on record. The other four partners — Chloe ($60/yr), David ($10/mo), Jordan ($4.99/mo), and Aris (~$50–100/yr) — all gave unprompted WTP figures. G4 requires paying signal across the full cohort, not 4 of 5. A single missing data point this close to the gate is a fixable gap, not a structural problem, but it must be closed this sprint.\n\nGet on a live call with Maya (not a form or async message) and ask her directly what she would pay today for Eterna. Log the figure in the scorecard. If she declines to name a number, document that explicitly — an informed non-answer is still signal. This closes the conversion funnel gap flagged in the scorecard and completes the WTP picture across all 5 partners.",
+      "priority": "urgent",
+      "labels": [
+        "m6",
+        "g4-readiness",
+        "Eterna",
+        "scorecard"
+      ],
+      "source": "M6 Design Partner Synthesis Agent"
+    },
+    {
+      "title": "Run structured friction interviews with at least 2 design partners",
+      "description": "All 5 design partners returned universally positive feedback this cycle — no bugs, no accuracy failures, no workflow gaps. Every feature request was cosmetic (fonts, haptics, confetti). This is a data quality problem, not a product quality signal. Five diverse users generating zero criticism almost certainly means the feedback collection method is not asking hard enough questions, not that the product is flawless. This is a yellow flag the synthesis explicitly names.\n\nConduct live structured friction interviews (not surveys or forms) with at least 2 partners before G4. The interview must include direct prompts: ask them to recall the last time Eterna gave a wrong answer, missed a tag, or made them do extra work to retrieve something. Ask what they would cut from the product if forced to. The goal is to surface real failure modes so they can be addressed before launch — or at minimum logged in the scorecard. Aris and David are good candidates given their detailed engagement with search and architecture-decision retrieval use cases.",
+      "priority": "high",
+      "labels": [
+        "m6",
+        "g4-readiness",
+        "Eterna",
+        "data-loop"
+      ],
+      "source": "M6 Design Partner Synthesis Agent"
+    },
+    {
+      "title": "Convert at least one WTP partner to actual payment or signed LOI",
+      "description": "Four partners have given concrete verbal price anchors — Chloe ($60/yr), David ($10/mo), Jordan ($4.99/mo), and Aris (~$50–100/yr). None have converted to actual payment. The G4 scorecard currently tracks stated WTP only; the conversion funnel (WTP stated → payment prompt shown → converted) is explicitly flagged as absent. Verbal anchors at Week 8 are strong signal, but G4 requires evidence that willingness to pay holds under a real payment prompt.\n\nPut a live Stripe link or a signed LOI in front of at least one partner this sprint. Chloe and David are the strongest signals based on specificity and engagement depth. If the stated price holds, log the conversion against the scorecard and close this gap. If it doesn't hold, that is critical product and pricing data that needs to surface before G4, not after. Do not let this slip to G4 review with only verbal anchors on record.",
+      "priority": "urgent",
+      "labels": [
+        "m6",
+        "g4-readiness",
+        "Eterna",
+        "contracts"
+      ],
+      "source": "M6 Design Partner Synthesis Agent"
+    }
+  ]
+}

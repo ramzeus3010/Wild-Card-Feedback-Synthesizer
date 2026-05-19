@@ -67,10 +67,10 @@ After a successful run, `inputs/` is empty, `outputs/` holds the latest run, and
 │   ├── david_slack.txt
 │   ├── Jordan_googleform.txt
 │   ├── maya_audio.txt
-│   ├── scorecard_eterna.md            example weekly scorecard
-│   ├── output_synthesis.json          pre-computed sample run (structured)
-│   ├── output_synthesis.md            pre-computed sample run (Slack-ready)
-│   └── output_linear_tickets.json     pre-computed routed handoff
+│   ├── scorecard_eterna_perfect.md   example weekly scorecard
+│   ├── synthesis.json                 pre-computed sample run (structured)
+│   ├── synthesis.md                   pre-computed sample run (Slack-ready)
+│   └── linear_tickets.json            pre-computed routed handoff
 ├── inputs/                            drop feedback files here (gitignored except .gitkeep)
 ├── outputs/                           latest run lands here (gitignored except .gitkeep)
 └── archive/                           past runs by ISO timestamp (gitignored except .gitkeep)
@@ -80,11 +80,11 @@ After a successful run, `inputs/` is empty, `outputs/` holds the latest run, and
 
 The repo ships with a pre-computed sample run based on the 5 Eterna design partner artifacts and a strong weekly scorecard. This particular run scored 7/10 — no Kill Signals fired, but the agent flagged universally positive feedback as a yellow flag worth investigating — so the routing agent fired the **tickets** branch:
 
-- [`examples/output_synthesis.md`](examples/output_synthesis.md) — Slack-ready synthesis
-- [`examples/output_synthesis.json`](examples/output_synthesis.json) — same payload, structured
-- [`examples/output_linear_tickets.json`](examples/output_linear_tickets.json) — Linear-API-shaped tickets from the routing agent
+- [`examples/synthesis.md`](examples/synthesis.md) — Slack-ready synthesis
+- [`examples/synthesis.json`](examples/synthesis.json) — same payload, structured
+- [`examples/linear_tickets.json`](examples/linear_tickets.json) — Linear-API-shaped tickets from the routing agent
 
-You can read these without running anything. The five sample inputs (`aris_email.txt`, `chloe_whatsapp.txt`, `david_slack.txt`, `Jordan_googleform.txt`, `maya_audio.txt`) cover varied media to exercise format-agnostic ingestion. The scorecard (`scorecard_eterna.md`) follows the Utopia framework: one master metric (D30 retention), supporting metrics, per-partner cohort breakdown, stated willingness-to-pay.
+You can read these without running anything. The five sample inputs (`aris_email.txt`, `chloe_whatsapp.txt`, `david_slack.txt`, `Jordan_googleform.txt`, `maya_audio.txt`) cover varied media to exercise format-agnostic ingestion. The scorecard (`scorecard_eterna_perfect.md`) follows the Utopia framework: one master metric (D30 retention), supporting metrics, per-partner cohort breakdown, stated willingness-to-pay.
 
 ## Prompts used
 
@@ -101,7 +101,7 @@ One real integration: the Anthropic Messages API. Both agents use it.
 
 - Model: `claude-sonnet-4-6`
 - Synthesis: `tools=[{name: "synthesize_feedback", input_schema: <output_schema>}]` with forced tool use — schema-conformant by construction, no string parsing.
-- Routing (tickets branch): `tools=[{name: "generate_tickets", input_schema: <linear_tickets_schema>}]` with forced tool use.
+- Routing (tickets branch): `tools=[{name: "draft_linear_tickets", input_schema: <linear_tickets_schema>}]` with forced tool use.
 - Routing (escalation / ready brief branches): regular text completion — the output is a Markdown document, not structured data.
 - One retry on `APIError`, then exit non-zero. If routing fails, synthesis is still preserved and archived; the routing error is surfaced clearly.
 

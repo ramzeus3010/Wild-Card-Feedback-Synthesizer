@@ -14,7 +14,9 @@
       "PowerShell(python run.py 2>&1 | Select-Object -Last 80)",
       "PowerShell(if \\(Test-Path .venv\\\\Scripts\\\\Activate.ps1\\) { Write-Output \"venv exists\" } else { Write-Output \"no venv\" }; Get-ChildItem -Directory | Where-Object { $_.Name -match \"venv|env\" } | Select-Object Name)",
       "PowerShell(.\\\\.venv\\\\Scripts\\\\Activate.ps1; python run.py 2>&1 | Select-Object -Last 100)",
-      "PowerShell(.\\\\.venv\\\\Scripts\\\\Activate.ps1; python run.py 2>&1 | Select-Object -Last 60)"
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\Activate.ps1; python run.py 2>&1 | Select-Object -Last 60)",
+      "Bash(awk 'NF' run.py)",
+      "Bash(awk '/^def /{n=$2;c=NR}{l[NR]=$0}END{for\\(i=1;i<=NR;i++\\){if\\(l[i]~/^def /\\){if\\(name\\){print name, NR-c-1; }name=$0;c=i}}}' run.py)"
     ]
   }
 }
